@@ -3,11 +3,11 @@ pkgname=hibe
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Quick utility for hibernating your system"
-arch=(x86_64)
+arch=(any)
 url="https://github.com/AirOne01/hibe"
 license=('MIT')
 groups=()
-depends=('libgcc_s>=1-64' 'libc>=6-64' 'ld-linux-x86-64>=2-64' 'systemd>=251.7-1')
+depends=()
 makedepends=(cargo)
 optdepends=()
 provides=()
