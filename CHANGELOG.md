@@ -1,3 +1,11 @@
+## 1.2.0 (2022-10-28)
+
+### Feat
+
+- **args**: add verbose support
+- **args**: add argument parsing using clap
+- **deps**: remove colored crate
+
 ## 1.1.0 (2022-10-28)
 
 ### Feat
