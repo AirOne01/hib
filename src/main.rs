@@ -1,9 +1,12 @@
 use clap;
 use dialoguer::{theme::ColorfulTheme, Confirm};
+use log::{info, warn};
 use std::process::Command;
 use std::str::from_utf8;
 
 fn main() {
+    simple_logger::init().unwrap();
+
     let mut verbose = false;
 
     match clap::Command::new("hibe")
@@ -40,18 +43,21 @@ fn main() {
                 .expect("Failed to elevate permission and execute the process")
         } else {
             Command::new("sh")
-                .args(["-c", "sudo systemctl hibernate"])
+                // .args(["-c", "sudo systemctl hibernate"])
+                .args(["-c", "false"])
                 .output()
                 .expect("Failed to execute the process")
         };
-        if verbose || !res.status.success() {
-            println!("status: {}", res.status.to_string());
+        if verbose {
+            info!("{}", res.status);
+        } else if !res.status.success() {
+            warn!("{}", res.status);
         };
         if !verbose || res.stdout.is_empty() {
-            println!("stdout: {}", match_u8(&res.stdout[..]));
+            info!("{}", match_u8(&res.stdout[..]));
         };
         if !verbose || res.stderr.is_empty() {
-            println!("stderr: {}", match_u8(&res.stderr[..]));
+            warn!("{}", match_u8(&res.stderr[..]));
         };
     }
 }
