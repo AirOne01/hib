@@ -1,4 +1,3 @@
-use colored::Colorize;
 use dialoguer::{theme::ColorfulTheme, Confirm};
 use std::process::Command;
 use std::str::from_utf8;
@@ -21,13 +20,13 @@ fn main() {
                 .expect("Failed to execute the process")
         };
         if !res.status.success() {
-            println!("status: {}", res.status.to_string().red());
+            println!("status: {}", res.status.to_string());
         };
         if !res.stdout.is_empty() {
             println!("stdout: {}", match_u8(&res.stdout[..]));
         };
         if !res.stderr.is_empty() {
-            println!("stderr: {}", match_u8(&res.stderr[..]).red());
+            println!("stderr: {}", match_u8(&res.stderr[..]));
         };
     }
 }
@@ -35,6 +34,6 @@ fn main() {
 fn match_u8(output: &[u8]) -> String {
     match from_utf8(output) {
         Ok(v) => format!("\n{}", v),
-        Err(_) => "invalid UTF-8 sequence".red().to_string(),
+        Err(_) => "invalid UTF-8 sequence".to_string(),
     }
 }
