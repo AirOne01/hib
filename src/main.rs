@@ -4,19 +4,29 @@ use std::process::Command;
 use std::str::from_utf8;
 
 fn main() {
-    let matches = clap::Command::new("hibe")
-        .about("system hibernation utility")
+    let mut verbose = false;
+
+    match clap::Command::new("hibe")
+        .about("System hibernation utility")
         .version("1.1.0")
         .author("AirOne01")
         .arg(
             clap::Arg::new("verbose")
                 .long("verbose")
-                .short('V')
+                .short('v')
                 .alias("debug")
                 .short_alias('d')
-                .help("show stdout, stderr and status")
+                .help("Show stdout, stderr and status")
                 .action(clap::ArgAction::SetTrue),
-        );
+        )
+        .get_matches()
+        .subcommand()
+    {
+        Some(("verbose", _)) => {
+            verbose = true;
+        }
+        _ => {}
+    };
 
     if Confirm::with_theme(&ColorfulTheme::default())
         .with_prompt("Do you want to hibernate?")
@@ -34,13 +44,13 @@ fn main() {
                 .output()
                 .expect("Failed to execute the process")
         };
-        if !res.status.success() {
+        if verbose || !res.status.success() {
             println!("status: {}", res.status.to_string());
         };
-        if !res.stdout.is_empty() {
+        if !verbose || res.stdout.is_empty() {
             println!("stdout: {}", match_u8(&res.stdout[..]));
         };
-        if !res.stderr.is_empty() {
+        if !verbose || res.stderr.is_empty() {
             println!("stderr: {}", match_u8(&res.stderr[..]));
         };
     }
