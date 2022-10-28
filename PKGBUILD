@@ -23,6 +23,8 @@ md5sums=()
 sha256sums=('SKIP')
 
 prepare() {
+  mkdir src
+  mv *.rs ./src/
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
