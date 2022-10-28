@@ -1,8 +1,23 @@
+use clap;
 use dialoguer::{theme::ColorfulTheme, Confirm};
 use std::process::Command;
 use std::str::from_utf8;
 
 fn main() {
+    let matches = clap::Command::new("hibe")
+        .about("system hibernation utility")
+        .version("1.1.0")
+        .author("AirOne01")
+        .arg(
+            clap::Arg::new("verbose")
+                .long("verbose")
+                .short('V')
+                .alias("debug")
+                .short_alias('d')
+                .help("show stdout, stderr and status")
+                .action(clap::ArgAction::SetTrue),
+        );
+
     if Confirm::with_theme(&ColorfulTheme::default())
         .with_prompt("Do you want to hibernate?")
         .interact()
