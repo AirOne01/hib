@@ -49,15 +49,15 @@ fn main() {
                 .expect("Failed to execute the process")
         };
         if verbose {
-            info!("{}", res.status);
+            info!("Status: {}", res.status);
         } else if !res.status.success() {
-            warn!("{}", res.status);
+            warn!("Status: {}", res.status);
         };
         if !verbose || res.stdout.is_empty() {
-            info!("{}", match_u8(&res.stdout[..]));
+            info!("STDOUT: {}", match_u8(&res.stdout[..]));
         };
         if !verbose || res.stderr.is_empty() {
-            warn!("{}", match_u8(&res.stderr[..]));
+            warn!("STDERR: {}", match_u8(&res.stderr[..]));
         };
     }
 }
