@@ -43,8 +43,7 @@ fn main() {
                 .expect("Failed to elevate permission and execute the process")
         } else {
             Command::new("sh")
-                // .args(["-c", "sudo systemctl hibernate"])
-                .args(["-c", "false"])
+                .args(["-c", "sudo systemctl hibernate"])
                 .output()
                 .expect("Failed to execute the process")
         };
