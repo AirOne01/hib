@@ -54,10 +54,10 @@ fn main() {
             warn!("Status: {}", res.status);
         };
         if !verbose || res.stdout.is_empty() {
-            info!("STDOUT: {}", match_u8(&res.stdout[..]));
+            info!("STDOUT: {}", wipe_lb(match_u8(&res.stdout[..])));
         };
         if !verbose || res.stderr.is_empty() {
-            warn!("STDERR: {}", match_u8(&res.stderr[..]));
+            info!("STDERR: {}", wipe_lb(match_u8(&res.stderr[..])));
         };
     }
 }
@@ -66,5 +66,14 @@ fn match_u8(output: &[u8]) -> String {
     match from_utf8(output) {
         Ok(v) => format!("\n{}", v),
         Err(_) => "invalid UTF-8 sequence".to_string(),
+    }
+}
+
+fn wipe_lb(output: String) -> String {
+    if output.split("\n").all(|x| x == "") {
+        // if the string is full of newlines
+        String::new()
+    } else {
+        output
     }
 }
