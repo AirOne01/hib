@@ -1,3 +1,14 @@
+## 1.2.1 (2022-10-28)
+
+### Feat
+
+- **log**: change logging to `log` and `simple_logger`
+
+### Fix
+
+- fix empty output returning trailing line breaks
+- **log**: add info on the output origin
+
 ## 1.2.0 (2022-10-28)
 
 ### Feat
