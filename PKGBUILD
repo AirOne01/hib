@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://github.com/AirOne01/hibe"
 license=('MIT')
 groups=()
-depends=()
+depends=('libgcc_s>=1-64' 'libc>=6-64' 'ld-linux-x86-64>=2-64' 'systemd>=251.7-1')
 makedepends=(cargo)
 optdepends=()
 provides=()
