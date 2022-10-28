@@ -55,7 +55,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "hib"
+name = "hibe"
 version = "1.0.0"
 dependencies = [
  "dialoguer",
