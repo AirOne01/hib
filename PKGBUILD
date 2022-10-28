@@ -1,10 +1,10 @@
 # Maintainer: Erwann (AirOne01) LAGOUCHE <erwann.lagouche@gmail.com>
-pkgname=hib
+pkgname=hibe
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Quick utility for hibernating your system"
 arch=(x86_64)
-url="https://github.com/AirOne01/hib"
+url="https://github.com/AirOne01/hibe"
 license=('MIT')
 groups=()
 depends=()
@@ -20,6 +20,7 @@ changelog=
 source=("git+$url.git")
 noextract=()
 md5sums=()
+sha256sums=('SKIP')
 
 prepare() {
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"

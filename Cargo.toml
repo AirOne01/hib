@@ -1,10 +1,10 @@
 [package]
-name = "hib"
+name = "hibe"
 version = "1.0.0"
 edition = "2021"
 license-file = "LICENSE"
-homepage = "https://github.com/AirOne01/hib"
-repository = "https://github.com/AirOne01/hib"
+homepage = "https://github.com/AirOne01/hibe"
+repository = "https://github.com/AirOne01/hibe"
 readme = "README.md"
 categories = ["command-line-utilities"]
 
