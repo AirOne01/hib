@@ -11,7 +11,7 @@ fn main() {
 
     match clap::Command::new("hibe")
         .about("System hibernation utility")
-        .version("1.2.1")
+        .version("1.2.2")
         .author("AirOne01")
         .arg(
             clap::Arg::new("verbose")

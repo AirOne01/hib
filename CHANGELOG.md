@@ -1,3 +1,9 @@
+## 1.2.2 (2022-10-28)
+
+### Fix
+
+- patch forgotten test function
+
 ## 1.2.1 (2022-10-28)
 
 ### Feat
